@@ -1,13 +1,33 @@
 import PrimaryButton from "../../components/PrimaryButton";
 
-const { View, TextInput } = require("react-native");
+const { View, TextInput, StyleSheet } = require("react-native");
 
 export default function GameStart() {
     return (
-        <View>
+        <View style={sytles.inputView}>
             <TextInput />
             <PrimaryButton>Reset</PrimaryButton>
             <PrimaryButton>Confirm</PrimaryButton>
         </View>
     );
 }
+
+const sytles = StyleSheet.create({
+    inputView: {
+        marginTop: 100,
+        padding: 16,
+        marginHorizontal: 24,
+        borderRadius: 10,
+        backgroundColor: '#72063c',
+        // Android
+        elevation: 8,
+        // IOS
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowRadius: 6,
+        shadowOpacity: 0.25,
+    },
+});
