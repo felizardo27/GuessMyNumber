@@ -1,3 +1,4 @@
+import NumberInput from "../../components/NumberInput";
 import PrimaryButton from "../../components/PrimaryButton";
 
 const { View, TextInput, StyleSheet } = require("react-native");
@@ -5,7 +6,7 @@ const { View, TextInput, StyleSheet } = require("react-native");
 export default function GameStart() {
     return (
         <View style={sytles.inputView}>
-            <TextInput />
+            <NumberInput />
             <PrimaryButton>Reset</PrimaryButton>
             <PrimaryButton>Confirm</PrimaryButton>
         </View>
