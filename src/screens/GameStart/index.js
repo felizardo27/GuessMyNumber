@@ -19,7 +19,7 @@ const sytles = StyleSheet.create({
         padding: 16,
         marginHorizontal: 24,
         borderRadius: 10,
-        backgroundColor: '#72063c',
+        backgroundColor: '#4e0329',
         // Android
         elevation: 8,
         // IOS
