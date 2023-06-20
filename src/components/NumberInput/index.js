@@ -1,13 +1,15 @@
 import { StyleSheet, TextInput } from "react-native";
 
-export default function NumberInput() {
+export default function NumberInput({ value, onChange }) {
     return (
         <TextInput 
             style={styles.numberInput} 
             maxLength={2} 
             keyboardType="number-pad"
             autoCapitalize="none"
-            autoCorrect={false} 
+            autoCorrect={false}
+            value={value}
+            onChangeText={onChange}
         />
     );
 }

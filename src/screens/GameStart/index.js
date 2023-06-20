@@ -1,18 +1,31 @@
+import { useState } from "react";
 import NumberInput from "../../components/NumberInput";
 import PrimaryButton from "../../components/PrimaryButton";
 
 const { View, TextInput, StyleSheet } = require("react-native");
 
 export default function GameStart() {
+    const [enteredNumber, setEnteredNumber] = useState('');
+
+    function numberInputHandler(input) {
+        setEnteredNumber(input);
+    }
+
+    function confirmButtonHandler() {
+        
+    }
     return (
         <View style={sytles.inputView}>
-            <NumberInput />
+            <NumberInput 
+                value={enteredNumber}
+                onChange={numberInputHandler}
+            />
             <View style={sytles.buttonsView}>
                 <View style={sytles.buttonView}>
                     <PrimaryButton>Reset</PrimaryButton>
                 </View>
                 <View style={sytles.buttonView}>
-                    <PrimaryButton>Confirm</PrimaryButton>
+                    <PrimaryButton onPress={confirmButtonHandler}>Confirm</PrimaryButton>
                 </View>
             </View>
         </View>
