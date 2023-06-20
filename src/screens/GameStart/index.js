@@ -7,14 +7,22 @@ export default function GameStart() {
     return (
         <View style={sytles.inputView}>
             <NumberInput />
-            <PrimaryButton>Reset</PrimaryButton>
-            <PrimaryButton>Confirm</PrimaryButton>
+            <View style={sytles.buttonsView}>
+                <View style={sytles.buttonView}>
+                    <PrimaryButton>Reset</PrimaryButton>
+                </View>
+                <View style={sytles.buttonView}>
+                    <PrimaryButton>Confirm</PrimaryButton>
+                </View>
+            </View>
         </View>
     );
 }
 
 const sytles = StyleSheet.create({
     inputView: {
+        alignItems: 'center',
+        justifyContent: 'center',
         marginTop: 100,
         padding: 16,
         marginHorizontal: 24,
@@ -30,5 +38,11 @@ const sytles = StyleSheet.create({
         },
         shadowRadius: 6,
         shadowOpacity: 0.25,
+    },
+    buttonsView: {
+        flexDirection: 'row',
+    },
+    buttonView: {
+        flex: 1,
     },
 });
