@@ -3,7 +3,7 @@ import NumberInput from "../../components/NumberInput";
 import PrimaryButton from "../../components/PrimaryButton";
 import { View, StyleSheet, Alert } from "react-native";
 
-export default function GameStart() {
+export default function GameStart({ onPickNumber }) {
     const [enteredNumber, setEnteredNumber] = useState('');
 
     function numberInputHandler(input) {
@@ -19,6 +19,8 @@ export default function GameStart() {
                 'Number has to be a number between 0 and 99.', 
                 [{ text: 'Okay', style: 'destructive', onPress:resetNumberHandler }]);
         }
+
+        onPickNumber(chosenNumber);
     }
 
     function resetNumberHandler() {
