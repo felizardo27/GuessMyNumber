@@ -4,7 +4,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import Game from "./src/screens/Game";
 import { StatusBar as StatusBarExp}  from "expo-status-bar";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import Colors from "./src/util/colors";
+
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
