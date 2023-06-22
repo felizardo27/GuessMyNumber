@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import Game from "./src/screens/Game";
 import { StatusBar as StatusBarExp}  from "expo-status-bar";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
@@ -19,7 +20,7 @@ export default function App() {
   }
 
   return (
-    <LinearGradient colors={["#3b021f", "#ddb52f"]} style={styles.rootScreen}>
+    <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
       <StatusBarExp style='light' />
       <ImageBackground
         source={require("./assets/images/background.png")}

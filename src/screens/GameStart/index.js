@@ -2,6 +2,7 @@ import { useState } from "react";
 import NumberInput from "../../components/NumberInput";
 import PrimaryButton from "../../components/PrimaryButton";
 import { View, StyleSheet, Alert } from "react-native";
+import Colors from "../../util/colors";
 
 export default function GameStart({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -51,7 +52,7 @@ const sytles = StyleSheet.create({
     padding: 16,
     marginHorizontal: 24,
     borderRadius: 10,
-    backgroundColor: "#4e0329",
+    backgroundColor: Colors.primary800,
     // Android
     elevation: 8,
     // IOS
