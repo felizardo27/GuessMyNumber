@@ -1,9 +1,9 @@
-import { ImageBackground, StyleSheet } from 'react-native';
-import GameStart from './src/screens/GameStart';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from 'react';
-import Game from './src/screens/Game';
-import { StatusBar } from 'expo-status-bar';
+import { ImageBackground, Platform, SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import GameStart from "./src/screens/GameStart";
+import { LinearGradient } from "expo-linear-gradient";
+import { useState } from "react";
+import Game from "./src/screens/Game";
+import { StatusBar as StatusBarExp}  from "expo-status-bar";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
@@ -19,16 +19,18 @@ export default function App() {
   }
 
   return (
-    <LinearGradient colors={['#3b021f','#ddb52f']} style={styles.rootScreen}>
-      <StatusBar style='light' />
-      <ImageBackground 
-        source={require('./assets/images/background.png')}
-        resizeMode='cover'
+    <LinearGradient colors={["#3b021f", "#ddb52f"]} style={styles.rootScreen}>
+      <StatusBarExp style='light' />
+      <ImageBackground
+        source={require("./assets/images/background.png")}
+        resizeMode="cover"
         style={styles.rootScreen}
         imageStyle={styles.backgroudImage}
       >
-      {screen}
-      </ImageBackground >
+        <SafeAreaView style={[styles.rootScreen, styles.androidStatusBar]}>
+          {screen}
+        </SafeAreaView>
+      </ImageBackground>
     </LinearGradient>
   );
 }
@@ -37,7 +39,10 @@ const styles = StyleSheet.create({
   rootScreen: {
     flex: 1,
   },
+  androidStatusBar: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  },
   backgroudImage: {
     opacity: 0.15,
-  }
+  },
 });
