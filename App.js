@@ -8,16 +8,17 @@ import Colors from "./src/util/colors";
 
 
 export default function App() {
-  const [userNumber, setUserNumber] = useState();
+  const [userNumber, setUserNumber] = useState(0);
 
   function pickedNumberHandler(pickedNumber) {
+    console.log(pickedNumber)
     setUserNumber(pickedNumber);
   }
 
   let screen = <GameStart onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
-    screen = <Game userNumber/>;
+    screen = <Game userNumber={userNumber} />;
   }
 
   return (
