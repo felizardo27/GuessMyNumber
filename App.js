@@ -5,20 +5,30 @@ import { useState } from "react";
 import Game from "./src/screens/Game";
 import { StatusBar as StatusBarExp}  from "expo-status-bar";
 import Colors from "./src/util/colors";
+import GameOver from "./src/screens/GameOver";
 
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(0);
+  const [gameIsOver, setGameIsOver] = useState(true);
 
   function pickedNumberHandler(pickedNumber) {
-    console.log(pickedNumber)
     setUserNumber(pickedNumber);
+    setGameIsOver(false);
+  }
+
+  function gameOverHandler() {
+    setGameIsOver(true);
   }
 
   let screen = <GameStart onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
-    screen = <Game userNumber={userNumber} />;
+    screen = <Game userNumber={userNumber} OnGameOver={gameOverHandler}/>;
+  }
+
+  if (gameIsOver && userNumber) {
+    screen = <GameOver />
   }
 
   return (
