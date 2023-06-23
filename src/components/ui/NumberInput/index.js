@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput } from "react-native";
-import Colors from "../../util/colors";
+import Colors from "../../../util/colors";
 
 export default function NumberInput({ value, onChange }) {
     return (
