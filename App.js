@@ -38,7 +38,7 @@ export default function App() {
         source={require("./assets/images/background.png")}
         resizeMode="cover"
         style={styles.rootScreen}
-        imageStyle={styles.backgroudImage}
+        imageStyle={styles.backgroundImage}
       >
         <SafeAreaView style={[styles.rootScreen, styles.androidStatusBar]}>
           {screen}
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   androidStatusBar: {
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   },
-  backgroudImage: {
+  backgroundImage: {
     opacity: 0.15,
   },
 });

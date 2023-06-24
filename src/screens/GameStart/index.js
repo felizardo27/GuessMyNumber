@@ -1,8 +1,11 @@
 import { useState } from "react";
 import NumberInput from "../../components/ui/NumberInput";
 import PrimaryButton from "../../components/ui/PrimaryButton";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, Text } from "react-native";
 import Colors from "../../util/colors";
+import Title from "../../components/ui/Title";
+import Card from "../../components/ui/Card";
+import InstructionText from "../../components/ui/InstructionText";
 
 export default function GameStart({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -30,39 +33,33 @@ export default function GameStart({ onPickNumber }) {
   }
 
   return (
-    <View style={sytles.inputView}>
-      <NumberInput value={enteredNumber} onChange={numberInputHandler} />
-      <View style={sytles.buttonsView}>
-        <View style={sytles.buttonView}>
-          <PrimaryButton onPress={resetNumberHandler}>Reset</PrimaryButton>
+    <View style={styles.rootContainer}>
+      <Title>Guess My Number</Title>
+      <Card>
+        <InstructionText>Enter a Number</InstructionText>
+        <NumberInput value={enteredNumber} onChange={numberInputHandler} />
+        <View style={styles.buttonsView}>
+          <View style={styles.buttonView}>
+            <PrimaryButton onPress={resetNumberHandler}>
+              Reset
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonView}>
+            <PrimaryButton onPress={confirmButtonHandler}>
+              Confirm
+            </PrimaryButton>
+          </View>
         </View>
-        <View style={sytles.buttonView}>
-          <PrimaryButton onPress={confirmButtonHandler}>Confirm</PrimaryButton>
-        </View>
-      </View>
+      </Card>
     </View>
   );
 }
 
-const sytles = StyleSheet.create({
-  inputView: {
-    alignItems: "center",
-    justifyContent: "center",
+const styles = StyleSheet.create({
+  rootContainer: {
+    flex: 1,
     marginTop: 100,
-    padding: 16,
-    marginHorizontal: 24,
-    borderRadius: 10,
-    backgroundColor: Colors.primary800,
-    // Android
-    elevation: 8,
-    // IOS
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
+    alignItems: "center",
   },
   buttonsView: {
     flexDirection: "row",
