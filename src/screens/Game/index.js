@@ -1,12 +1,15 @@
 import { Alert, StyleSheet, View } from "react-native";
 import { useEffect, useState } from "react";
+import { Ionicons } from "@expo/vector-icons"
+
 import NumberContainer from "../../components/game/NumberContainer";
-import Title from "../../components/ui/Title";
-import PrimaryButton from "../../components/ui/PrimaryButton";
+
+import ButtonView from "../../components/ui/ButtonView";
+import ButtonsView from "../../components/ui/ButtonsView";
 import Card from "../../components/ui/Card";
 import InstructionText from "../../components/ui/InstructionText";
-import ButtonsView from "../../components/ui/ButtonsView";
-import ButtonView from "../../components/ui/ButtonView";
+import PrimaryButton from "../../components/ui/PrimaryButton";
+import Title from "../../components/ui/Title";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -67,12 +70,12 @@ export default function Game({ userNumber, OnGameOver }) {
         <ButtonsView>
           <ButtonView>
             <PrimaryButton onPress={() => nextGuessHandler("lower")}>
-              -
+              <Ionicons name="md-remove" size={24} color="white" />
             </PrimaryButton>
           </ButtonView>
           <ButtonView>
             <PrimaryButton onPress={() => nextGuessHandler("greater")}>
-              +
+              <Ionicons name="md-add" size={24} color="white" />
             </PrimaryButton>
           </ButtonView>
         </ButtonsView>
