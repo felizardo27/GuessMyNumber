@@ -6,6 +6,8 @@ import Colors from "../../util/colors";
 import Title from "../../components/ui/Title";
 import Card from "../../components/ui/Card";
 import InstructionText from "../../components/ui/InstructionText";
+import ButtonsView from "../../components/ui/ButtonsView";
+import ButtonView from "../../components/ui/ButtonView";
 
 export default function GameStart({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -38,18 +40,18 @@ export default function GameStart({ onPickNumber }) {
       <Card>
         <InstructionText>Enter a Number</InstructionText>
         <NumberInput value={enteredNumber} onChange={numberInputHandler} />
-        <View style={styles.buttonsView}>
-          <View style={styles.buttonView}>
+        <ButtonsView>
+          <ButtonView>
             <PrimaryButton onPress={resetNumberHandler}>
               Reset
             </PrimaryButton>
-          </View>
-          <View style={styles.buttonView}>
+          </ButtonView>
+          <ButtonView>
             <PrimaryButton onPress={confirmButtonHandler}>
               Confirm
             </PrimaryButton>
-          </View>
-        </View>
+          </ButtonView>
+        </ButtonsView>
       </Card>
     </View>
   );
@@ -60,11 +62,5 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 100,
     alignItems: "center",
-  },
-  buttonsView: {
-    flexDirection: "row",
-  },
-  buttonView: {
-    flex: 1,
   },
 });
