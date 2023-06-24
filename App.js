@@ -6,11 +6,22 @@ import Game from "./src/screens/Game";
 import { StatusBar as StatusBarExp}  from "expo-status-bar";
 import Colors from "./src/util/colors";
 import GameOver from "./src/screens/GameOver";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(0);
   const [gameIsOver, setGameIsOver] = useState(true);
+
+  const [fontsLoaded] = useFonts({
+    'openSans-Bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+    'openSans-Regular': require('./assets/fonts/OpenSans-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
