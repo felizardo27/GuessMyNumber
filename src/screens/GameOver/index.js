@@ -1,15 +1,23 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import Title from "../../components/ui/Title";
 import Colors from "../../util/colors";
+import PrimaryButton from "../../components/ui/PrimaryButton";
 
 export default function GameOver() {
   return (
     <View style={styles.rootView}>
       <Title>GAME OVER</Title>
       <View style={styles.imageView}>
-        <Image source={require('../../../assets/images/success.png')} style={styles.image} />
+        <Image
+          source={require("../../../assets/images/success.png")}
+          style={styles.image}
+        />
       </View>
-      <Text>Your phone needed X rounds to guess the number Y.</Text>
+      <Text style={styles.summaryText}>
+        Your phone needed <Text style={styles.highlight}>X</Text> rounds to
+        guess the number <Text style={styles.highlight}>Y</Text>.
+      </Text>
+      <PrimaryButton>Start New Game</PrimaryButton>
     </View>
   );
 }
@@ -18,8 +26,8 @@ const styles = StyleSheet.create({
   rootView: {
     flex: 1,
     padding: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   imageView: {
     height: 300,
@@ -27,11 +35,21 @@ const styles = StyleSheet.create({
     borderRadius: 150,
     borderWidth: 3,
     borderColor: Colors.primary800,
-    overflow: 'hidden',
+    overflow: "hidden",
     margin: 36,
   },
   image: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
+  },
+  summaryText: {
+    fontFamily: "openSans-Regular",
+    fontSize: 20,
+    textAlign: "center",
+    marginBottom: 24,
+  },
+  highlight: {
+    fontFamily: "openSans-Bold",
+    color: Colors.primary500,
   },
 });
