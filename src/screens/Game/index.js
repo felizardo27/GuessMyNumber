@@ -1,6 +1,6 @@
 import { Alert, StyleSheet, View, Text, FlatList } from "react-native";
 import { useEffect, useState } from "react";
-import { Ionicons } from "@expo/vector-icons"
+import { Ionicons } from "@expo/vector-icons";
 
 import NumberContainer from "../../components/game/NumberContainer";
 
@@ -10,6 +10,8 @@ import Card from "../../components/ui/Card";
 import InstructionText from "../../components/ui/InstructionText";
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import Title from "../../components/ui/Title";
+import GuessLogItem from "../../components/game/GuessLogItem";
+import LogList from "../../components/game/LogList/intex";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -65,7 +67,7 @@ export default function Game({ userNumber, OnGameOver }) {
       currentGuess
     );
     setCurrentGuess(newRndNumber);
-    setGuessRounds(prevGuess => [newRndNumber, ...prevGuess]);
+    setGuessRounds((prevGuess) => [newRndNumber, ...prevGuess]);
   }
 
   return (
@@ -73,7 +75,9 @@ export default function Game({ userNumber, OnGameOver }) {
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText style={styles.instructionText}>Higher or Lower?</InstructionText>
+        <InstructionText style={styles.instructionText}>
+          Higher or Lower?
+        </InstructionText>
         <ButtonsView>
           <ButtonView>
             <PrimaryButton onPress={() => nextGuessHandler("lower")}>
@@ -87,14 +91,7 @@ export default function Game({ userNumber, OnGameOver }) {
           </ButtonView>
         </ButtonsView>
       </Card>
-      <View>
-        <Text>LOG ROUNDS</Text>
-        <FlatList 
-          data={guessRounds}
-          renderItem={(itemData) => <Text>{itemData.item}</Text>}
-          keyExtractor={item => item}
-        />
-      </View>
+      <LogList data={guessRounds} />
     </View>
   );
 }
@@ -106,5 +103,9 @@ const styles = StyleSheet.create({
   },
   instructionText: {
     marginBottom: 12,
-  }
+  },
+  listContainer: {
+    flex: 1,
+    padding: 16,
+  },
 });
