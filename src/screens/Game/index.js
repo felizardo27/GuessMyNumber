@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, View, Text } from "react-native";
+import { Alert, StyleSheet, View, Text, FlatList } from "react-native";
 import { useEffect, useState } from "react";
 import { Ionicons } from "@expo/vector-icons"
 
@@ -89,7 +89,11 @@ export default function Game({ userNumber, OnGameOver }) {
       </Card>
       <View>
         <Text>LOG ROUNDS</Text>
-        {guessRounds.map(guess => <Text key={guess}>{guess}</Text>)}
+        <FlatList 
+          data={guessRounds}
+          renderItem={(itemData) => <Text>{itemData.item}</Text>}
+          keyExtractor={item => item}
+        />
       </View>
     </View>
   );
