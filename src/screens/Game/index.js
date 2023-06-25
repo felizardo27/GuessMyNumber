@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View, Text } from "react-native";
 import { useEffect, useState } from "react";
 import { Ionicons } from "@expo/vector-icons"
 
@@ -27,6 +27,7 @@ let maxBoundary = 100;
 export default function Game({ userNumber, OnGameOver }) {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  const [guessRounds, setGuessRounds] = useState([initialGuess]);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -37,7 +38,7 @@ export default function Game({ userNumber, OnGameOver }) {
   useEffect(() => {
     minBoundary = 1;
     maxBoundary = 100;
-  });
+  }, []);
 
   function nextGuessHandler(direction) {
     if (
@@ -64,6 +65,7 @@ export default function Game({ userNumber, OnGameOver }) {
       currentGuess
     );
     setCurrentGuess(newRndNumber);
+    setGuessRounds(prevGuess => [newRndNumber, ...prevGuess]);
   }
 
   return (
@@ -85,9 +87,10 @@ export default function Game({ userNumber, OnGameOver }) {
           </ButtonView>
         </ButtonsView>
       </Card>
-      {/* <View>
+      <View>
         <Text>LOG ROUNDS</Text>
-      </View> */}
+        {guessRounds.map(guess => <Text key={guess}>{guess}</Text>)}
+      </View>
     </View>
   );
 }
