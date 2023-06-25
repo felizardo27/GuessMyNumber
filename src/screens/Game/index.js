@@ -34,6 +34,11 @@ export default function Game({ userNumber, OnGameOver }) {
     }
   }, [[currentGuess, userNumber, OnGameOver]]);
 
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  });
+
   function nextGuessHandler(direction) {
     if (
       (direction === "lower" && currentGuess < userNumber) ||

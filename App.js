@@ -10,8 +10,9 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from 'expo-splash-screen';
 
 export default function App() {
-  const [userNumber, setUserNumber] = useState(0);
+  const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [guessRounds, setGuessRounds] = useState(0);
 
   const [fontsLoaded] = useFonts({
     'openSans-Bold': require('./assets/fonts/OpenSans-Bold.ttf'),
@@ -40,6 +41,11 @@ export default function App() {
     setGameIsOver(true);
   }
 
+  function startNewGameHandler() {
+    setUserNumber(null);
+    setGuessRounds(0);
+  }
+
   let screen = <GameStart onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
@@ -47,7 +53,11 @@ export default function App() {
   }
 
   if (gameIsOver && userNumber) {
-    screen = <GameOver />
+    screen = <GameOver 
+      guessNumber={userNumber} 
+      roundsNumber={guessRounds} 
+      onStartNewGame={startNewGameHandler}
+    />
   }
 
   return (
