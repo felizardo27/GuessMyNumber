@@ -33,7 +33,7 @@ export default function Game({ userNumber, OnGameOver }) {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      OnGameOver();
+      OnGameOver(guessRounds.length);
     }
   }, [[currentGuess, userNumber, OnGameOver]]);
 
