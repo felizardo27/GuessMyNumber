@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import Title from "../../components/ui/Title";
 import Colors from "../../util/colors";
 import PrimaryButton from "../../components/ui/PrimaryButton";
@@ -22,6 +22,8 @@ export default function GameOver({ roundsNumber, guessNumber, onStartNewGame }) 
   );
 }
 
+const deviceWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   rootView: {
     flex: 1,
@@ -30,9 +32,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imageView: {
-    height: 300,
-    width: 300,
-    borderRadius: 150,
+    height: deviceWidth < 400 ? 150 : 300,
+    width: deviceWidth < 400 ? 150 : 300,
+    borderRadius: deviceWidth < 400 ? 75 : 150,
     borderWidth: 3,
     borderColor: Colors.primary800,
     overflow: "hidden",
