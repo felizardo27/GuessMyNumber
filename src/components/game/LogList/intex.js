@@ -8,7 +8,7 @@ export default function LogList({ data }) {
         data={data}
         renderItem={(itemData) => (
           <GuessLogItem
-            roundNumber={itemData.index + 1}
+            roundNumber={data.length - itemData.index}
             guess={itemData.item}
           />
         )}
